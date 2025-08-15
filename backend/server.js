@@ -25,12 +25,6 @@ app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/upload', uploadRoutes);
-app.use(
-  cors({
-    origin: ['https://proshop-v2.vercel.app', 'https://proshop-v2.vercel.app'],
-    credentials: true,
-  })
-);
 
 app.get('/api/config/paypal', (req, res) =>
   res.send({ clientId: process.env.PAYPAL_CLIENT_ID })
@@ -54,6 +48,8 @@ if (process.env.NODE_ENV === 'production') {
 
 app.use(notFound);
 app.use(errorHandler);
+
+app.use(cors({ origin: '*' }));
 
 app.listen(port, () =>
   console.log(`Server running in ${process.env.NODE_ENV} mode on port ${port}`)
