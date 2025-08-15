@@ -1,5 +1,5 @@
 export const BASE_URL =
-  process.env.NODE_ENV === 'develeopment'
+  process.env.NODE_ENV === 'development'
     ? 'https://proshop-v2-nq16.onrender.com'
     : '';
 // export const BASE_URL = ''; // If using proxy
