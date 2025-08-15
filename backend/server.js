@@ -17,6 +17,8 @@ connectDB();
 
 const app = express();
 
+app.use(cors({ origin: '*' }));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -48,8 +50,6 @@ if (process.env.NODE_ENV === 'production') {
 
 app.use(notFound);
 app.use(errorHandler);
-
-app.use(cors({ origin: '*' }));
 
 app.listen(port, () =>
   console.log(`Server running in ${process.env.NODE_ENV} mode on port ${port}`)
